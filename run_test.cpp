@@ -5,6 +5,7 @@
 #include <boost/timer/timer.hpp>
 #include <iostream>
 #include "cuda_2b_direct.h"
+#include "cuda_2b_maple.h"
 #include <cuda.h>
 #include <cuda_runtime_api.h>
 
@@ -1276,4 +1277,16 @@ int main() {
     std::cout << "CUDA direct copy back" << std::endl;
     t.report();
     std::cout << "CUDA direct completed, result: " << e[0] << std::endl;
+    cudaMemset(e_d, -1234., sizeof(double));
+    t.start();
+    launch_evaluate_2b_maple(a_d, x_d, g_d, e_d);
+    t.stop();
+    std::cout << "CUDA maple completed" << std::endl;
+    t.report();
+    t.start();
+    cudaMemcpy(&e, e_d, sizeof(double), cudaMemcpyDeviceToHost);
+    t.stop();
+    std::cout << "CUDA maple copy back" << std::endl;
+    t.report();
+    std::cout << "CUDA maple completed, result: " << e[0] << std::endl;
 }
