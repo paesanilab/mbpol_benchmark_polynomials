@@ -6,7 +6,7 @@ find_package( Boost 1.55 COMPONENTS timer system REQUIRED )
 find_package( CUDA REQUIRED )
 #include_directories( ${Boost_INCLUDE_DIR} )
 
-add_definitions(-DDISABLEPOLYCPU)
+#add_definitions(-DDISABLEPOLYCPU)
 #add_definitions(-DDISABLEPOLYGPU)
 
 add_library(poly-2b-v6x-nogrd poly-2b-v6x-nogrd.cpp)
