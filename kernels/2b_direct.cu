@@ -20,4 +20,5 @@ __global__ void evaluate_2b_direct_many(double * a, double * x, double * g, doub
 
 void launch_evaluate_2b_direct(double * a, double * x, double * g, double * e) {
     evaluate_2b_direct_many<<<1,1>>>(a, x, g, e, 10000);
+    cudaDeviceSynchronize();
 }

@@ -19,4 +19,5 @@ __global__ void evaluate_2b_maple_many(double * a, double * x, double * g, doubl
 
 void launch_evaluate_2b_maple(double * a, double * x, double * g, double * e) {
     evaluate_2b_maple_many<<<1,1>>>(a, x, g, e, 10000);
+    cudaDeviceSynchronize();
 }
