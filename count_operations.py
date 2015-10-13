@@ -6,5 +6,7 @@ for filename in glob("kernels/*polynomial.cu"):
         source = f.read()
     print()
     print(filename)
+    print("Lines", len(source.split("\n")))
+    print("Characters", len(source)-source.count(" ")-source.count("\n"))
     for symbol in ["+", "*", "=", "pow"]:
         print(symbol, source.count(symbol))
