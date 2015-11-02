@@ -1206,7 +1206,7 @@ int main() {
     t.start();
 
     for (int i=0; i<10000; ++i) {
-        energy = eval_direct_gradient(a, x, g);
+        energy = eval_cpu_direct(a, x, g);
     }
 
     t.stop();
