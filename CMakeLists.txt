@@ -9,13 +9,11 @@ find_package( CUDA REQUIRED )
 #add_definitions(-DDISABLEPOLYCPU)
 #add_definitions(-DDISABLEPOLYGPU)
 
-add_library(poly-2b-v6x-nogrd poly-2b-v6x-nogrd.cpp)
 add_library(poly-2b-v6x poly-2b-v6x.cpp)
-add_library(poly-model x2b-v6x-direct.cpp)
 add_library(direct_gradient direct_gradient.cpp)
 cuda_add_library(cuda_2b_direct kernels/2b_direct.cu)
 cuda_add_library(cuda_2b_maple kernels/2b_maple.cu)
 
 add_executable(run_test run_test.cpp)
 
-target_link_libraries(run_test poly-model poly-2b-v6x-nogrd poly-2b-v6x direct_gradient cuda_2b_direct cuda_2b_maple ${Boost_LIBRARIES})
+target_link_libraries(run_test poly-2b-v6x direct_gradient cuda_2b_direct cuda_2b_maple ${Boost_LIBRARIES})
