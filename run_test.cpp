@@ -1,10 +1,11 @@
-#include "direct_gradient.h"
-#include <boost/timer/timer.hpp>
-#include <iostream>
+#include "cpu_direct.h"
+#include "cpu_maple.h"
 #include "cuda_2b_direct.h"
 #include "cuda_2b_maple.h"
 #include <cuda.h>
 #include <cuda_runtime_api.h>
+#include <boost/timer/timer.hpp>
+#include <iostream>
 
 int main() {
 
@@ -1220,7 +1221,7 @@ int main() {
     t.start();
 
     for (int i=0; i<10000; ++i) {
-        energy = poly_2b_v6x_eval(a, x, g);
+        energy = eval_cpu_maple(a, x, g);
     }
 
     // for (int i=0; i<10; ++i)
