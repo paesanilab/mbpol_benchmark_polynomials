@@ -4,7 +4,7 @@ project(test2b)
 
 find_package( Boost 1.55 COMPONENTS timer system REQUIRED )
 find_package( CUDA REQUIRED )
-#include_directories( ${Boost_INCLUDE_DIR} )
+include_directories( include/ ${Boost_INCLUDE_DIR} )
 
 #add_definitions(-DDISABLEPOLYCPU)
 #add_definitions(-DDISABLEPOLYGPU)
