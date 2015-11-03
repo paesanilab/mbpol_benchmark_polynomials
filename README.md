@@ -8,7 +8,7 @@ We are now working on the CUDA implementation, and we have performance issues.
 
 ## Algorithm description
 
-The key element of the MBPol force field is the evaluation of a 4th order polynomial with thousands of terms for each pair and triplet of molecules. In production simulations molecules are generally 512 or more, so within our cutoff we have ~30000 pairs and ~30000 triplets.
+The key element of the MBPol force field is the evaluation of a 4th order polynomial with thousands of terms for each pair of molecules. Production simulations molecules have generally 512 or more molecules, so within our cutoff we have ~30000 pairs.
 Therefore there is no need to parallelize the polynomial evaluation, each of them should be executed by a CUDA thread.
 
 ## Complexity of the polynomials
@@ -24,7 +24,7 @@ Polynomials are just multiplications and sums, a polynomial is made up of 1153 t
 
 We call this version of the polynomials, available in `cpu_direct.cpp`, "Direct".
 
-First we made a rewrite of the polynomials to CUDA C, here is some statistics of the code:
+First we made a rewrite of the polynomials to CUDA C, here is some statistics about the code:
 
 ```
 kernels/2b_direct_polynomial.cu
